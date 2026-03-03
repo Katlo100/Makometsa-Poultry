@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="contact">
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Get In Touch</h2>
+        <p>&#128222; +267 76670294 / 72291357 / 76676358</p>
+        <p>&#128205; Gabane, Botswana</p>
+        <p>&#127968; Plot 1019, Shaodi Ward</p>
+        <p>&#128233; <a href="mailto:MakometsaPoultry@gmail.com">MakometsaPoultry@gmail.com</a></p>
+
+        <h3>Send Us A Message</h3>
+        <form id="contactForm" action="/action_page.php">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+            <label for="product">Product of Interest:</label>
+            <select id="product" name="product">
+                <option value="freshchicken">Fresh Chicken</option>
+                <option value="organiceggs">Organic Eggs</option>
+                <option value="specialtypoultrycuts">Specialty Poultry Cuts</option>
+            </select>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+            <label for="price">Price per Chicken (P):</label>
+            <input type="text" id="price" name="price" value="80.00" readonly>
+            <input type="button" id="calcBtn" value="Calculate Total">
+            <h3>Total Cost: P <span id="Total">0.00</span></h3>
+            <label for="inquiry">Type of Inquiry:</label>
+            <select id="inquiry" name="inquiry">
+                <option value="order">Place an Order</option>
+                <option value="info">Request More Information</option>
+                <option value="complaint">Submit a Complaint</option>
+                <option value="other">Other</option>
+            </select>
+            <!-- message box for certain inquiries -->
+            <div id="messageGroup" style="display:none; margin-top:10px;">
+                <label for="message">Your Message:</label>
+                <textarea id="message" name="message" rows="4" style="width:100%;"></textarea>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Makometsa Poultry. All rights reserved.</p>
+    </footer>
+
+    <script>
+    document.getElementById('calcBtn').addEventListener('click', function() {
+        const qty = parseFloat(document.getElementById('quantity').value) || 0;
+        const price = parseFloat(document.getElementById('price').value) || 0;
+        const total = qty * price;
+        document.getElementById('Total').textContent = total.toFixed(2);
+    });
+
+    document.getElementById('inquiry').addEventListener('change', function() {
+        const val = this.value;
+        const box = document.getElementById('messageGroup');
+        if (val === 'info' || val === 'complaint' || val === 'other') {
+            box.style.display = 'block';
+        } else {
+            box.style.display = 'none';
+        }
+    });
+    </script>
+</body>
+</html>

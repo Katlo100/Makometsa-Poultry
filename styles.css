@@ -1,0 +1,246 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+main img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+}
+
+footer {
+    background-color: #faf7f7;
+    color: rgba(4, 68, 2, 0.938);
+    text-align: center;
+    padding: 1px;
+    position: fixed;
+    bottom: 1px;
+    width: 100%;
+}
+
+p {
+    font-size: 1.1em;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* default images have no border; apply .framed to add one */
+img {
+    border: none;
+}
+
+.framed {
+    border: 5px solid #4CAF50;
+    border-radius: 10px;
+}
+
+main a[href^="mailto"] {
+    color: #ff5722;
+    font-weight: bold;
+}
+
+h2.style {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.price-card {
+    border: 2px solid #014417;
+    border-radius: 8px;
+    padding: 25px;
+    margin: 20px auto;
+    text-align: center;
+    background-color: white;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.price-card h3 {
+    margin-top: 0;
+    color: #4CAF50;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.price-card .price {
+    font-size: 32px;
+    font-weight: bold;
+    color: #014417;
+    margin: 15px 0;
+}
+
+.price-card p {
+    color: #666;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* about page sections */
+main section {
+    margin-bottom: 40px;
+    padding: 20px 10px;
+}
+.intro {
+    text-align: center;
+    background: url('Makometsa Poultry Logo.png') no-repeat center center;
+    background-size: contain;
+    padding: 60px 20px;
+    color: #fff;
+}
+.pricing .price-card {
+    margin: 15px auto;
+}
+.mission h2 {
+    margin-top: 20px;
+}
+
+.price-card button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.price-card button:hover {
+    background-color: #45a049;
+    opacity: 0.9;
+}
+
+/* layout helpers */
+.content-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+}
+.left-col {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.right-col {
+    flex: 1;
+}
+.right-col img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* specific styling for half-page logo image */
+.half-logo {
+    max-width: 100%;
+    height: auto;
+}
+
+/* contact page background */
+body.contact {
+    background: url('Makometsa Poultry Logo.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+body.contact header {
+    background-color: rgba(76, 175, 80, 0.8); /* semi-transparent green */
+}
+
+/* about page background */
+body.about {
+    background: url('Makometsa Poultry Logo.png') no-repeat center top;
+    background-size: contain;
+    background-attachment: local;
+    color: #333;
+}
+
+body.about header {
+    background-color: rgba(76, 175, 80, 0.9);
+}
+
+/* basic form styles */
+form {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+form label {
+    display: block;
+    margin-top: 10px;
+}
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+form input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
