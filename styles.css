@@ -128,13 +128,6 @@ main section {
     margin-bottom: 40px;
     padding: 20px 10px;
 }
-.intro {
-    text-align: center;
-    background: url('Makometsa Poultry Logo.png') no-repeat center center;
-    background-size: contain;
-    padding: 60px 20px;
-    color: #fff;
-}
 .pricing .price-card {
     margin: 15px auto;
 }
