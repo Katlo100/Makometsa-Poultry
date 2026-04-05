@@ -237,3 +237,25 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
     background-color: #45a049;
 }
+/* HERO SECTION BACKGROUND */
+.hero-section {
+    height: 40vh;
+    background: url('https://images.unsplash.com/photo-1500595046743-cd271d694d30') center/cover no-repeat;
+}
+
+/* PRICE CARDS */
+.price {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #198754;
+}
+
+/* NAVBAR LINKS */
+.nav-link {
+    font-size: 1.1rem;
+}
+
+/* Smooth hover */
+.nav-link:hover {
+    color: #d4f8d4 !important;
+}
