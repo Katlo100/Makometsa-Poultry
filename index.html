@@ -1,57 +1,348 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makometsa Poultry</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Makometsa Poultry – Fresh Poultry Delivered</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+.hero-header {
+  height: 90vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+              url('Index.Popup.jpeg') center/cover no-repeat;
+  position: relative;
+  color: white;
+}
+
+.hero-navbar {
+  position: absolute;
+  top: 0; width: 100%;
+  padding: 25px 0;
+  z-index: 50;
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo, .logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+   color: #b3ffb3; 
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: white;
+  transition: .3s;
+}
+
+@media (max-width: 900px) {
+
+  .hamburger { display: flex; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0,0,0,0.85);
+    width: 100%;
+    position: absolute;
+    top: 80px; right: 0;
+    padding: 25px 0;
+  }
+
+  .nav-links.mobile-active {
+    display: flex;
+    animation: dropMenu .3s ease;
+  }
+
+  @keyframes dropMenu {
+    from { opacity:0; transform:translateY(-10px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .hamburger.active span:nth-child(2) { opacity:0; }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+}
+
+.hero-content {
+  position: absolute;
+  top: 55%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3.4rem;
+  font-weight: 800;
+}
+
+.hero-content p { font-size: 1.3rem; }
+
+.hero-btn {
+  background: #0a5c0a;
+  padding: 14px 35px;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  transition: .3s;
+}
+
+.hero-btn:hover { background:#067306; transform:scale(1.05); }
+
+.feature-card {
+  background: rgb(233,231,200);
+  border-radius: 40px;
+  padding: 40px;
+  box-shadow: 2px 4px 8px rgba(155,235,89,0.8);
+  border-left: 8px solid #0a5c0a;
+  transition: .3s;
+  text-align:center;
+}
+.feature-card:hover { transform:translateY(-8px); }
+
+.product-card {
+  background:white;
+  border-radius:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.12);
+  transition:.3s;
+  padding-bottom:20px;
+}
+.product-card:hover { transform:scale(1.05); }
+.product-card img {
+  width:100%; height:240px;
+  border-radius:20px 20px 0 0;
+  object-fit:cover;
+}
+
+.testimonial-box {
+  background:rgb(233,231,200);
+  border-radius:40px;
+  padding:35px;
+  border-left:8px solid #0a5c0a;
+  text-align:center;
+  transition:.3s;
+}
+.testimonial-box:hover { transform:translateY(-5px); }
+.testimonial-box img {
+  width:80px; border-radius:50%; margin-bottom:12px;
+}
+
+.newsletter-box {
+  background:#0a5c0a;
+  padding:40px;
+  border-radius:25px;
+  text-align:center;
+  color:white;
+}
+.newsletter-box input {
+  padding:12px;
+  border-radius:8px;
+}
+
+.footer {
+  background:#0a5c0a;
+  color:white;
+  padding:20px;
+  text-align:center;
+  border-top-left-radius:40px;
+  border-top-right-radius:40px;
+  margin-top:70px;
+}
+
+</style>
 </head>
+
 <body>
-    <header>
-    <h1 style="color:black">Welcome to Makometsa Poultry</h1>
-    <h4 style="color:black">Hard Work You Can Taste</h4>
-    <p>Your Trusted Source For High-Quality poultry products.</p>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="About.html">About</a> |
-        <a href="Contact.html">Contact</a>
-    </nav>
-    </header>
+ <div id="introPopup" class="intro-popup">
+  <img src="Index.Popup.jpeg" alt="Makometsa Poultry Products" class="intro-img">
+  <div class="intro-text" style="color: white; font-weight: bold;">
+    <h1>Makometsa Poultry</h1>
+    <p>
+      Supplying quality poultry and organic manure you can trust
+      for healthier meals and better farming.
+    </p>
+    <h1>&#128522</h1>
+  </div>
+</div>
 
-    <main>
-        <div class="content-row">
-            <div class="right-col">
-                <img src="Makometsa Poultry Logo.png" alt="Makometsa Poultry" class="logo">
-            </div>
-            <div class="right-col">
-                <p>Explore our range of premium poultry products and enjoy the best quality at affordable prices.</p>
-                <ul>
-                    <li>Fresh Chicken</li>
-                    <li>Organic Eggs</li>
-                    <li>Specialty Poultry Cuts</li>
-                </ul>
-                <div class="price-card">
-                    <h3>Live Broiler Chicken</h3>
-                    <div class="price">P80.00</div>
-                    <p>Fresh and healthy</p>
-                    <a href="Contact.html"><button>Order Now</button></a>
-                </div>
-                <p>Contact us today to place your order or learn more about our products!</p>
-            </div>
-        </div>
+<header class="hero-header">
 
-        <p>Follow us on social media for the latest updates and promotions:</p>
-        <ul>
-            <li><a href="https://www.facebook.com/makometsapoultry">Facebook</a></li>
-            <li><a href="https://www.instagram.com/makometsapoultry">Instagram</a></li>
-            <li><a href="https://www.twitter.com/makometsapoultry">Twitter</a></li>
-        </ul>
-    </main>
+  <nav class="hero-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Makometsa Poultry</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
 
-        <footer>
-        <p>&copy; 2026 Makometsa Poultry. All rights reserved.</p>
-        </footer>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+         <li><a href="Order.html">Order With Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Fresh Poultry Delivered</h1>
+    <p>Healthy chickens • Fresh eggs • Premium feed</p>
+    <a href="Products.html" class="hero-btn">Explore Products</a>
+  </div>
+
+</header>
+
+<div class="container mt-5">
+  <h2 class="text-center fw-bold text-success" data-aos="fade-up">Why Choose Us?</h2>
+  <p class="text-center mb-4" data-aos="fade-up" data-aos-delay="200">Excellence in every delivery.</p>
+
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="feature-card"> Premium Quality<br>Raised with care.</div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="feature-card"> Affordable Pricing<br>Best value guaranteed.</div>
+    </div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+      <div class="feature-card"> Fast Delivery<br>Across Gaborone & nearby areas.</div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h2 class="text-center fw-bold text-success" data-aos="fade-up">Our Best Sellers</h2>
+
+  <div class="row g-4 mt-3">
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="product-card text-center">
+        <img src="Broilers.jpeg" alt="Fresh Eggs" style="height: fit-content;" >
+        <h5>Broiler Chickens</h5>
+      </div>
+    </div>
+
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="product-card text-center">
+        <img src="Layers.jpeg" alt="Fresh Eggs" style="height: fit-content;" >
+        <h5>Fresh Eggs</h5>
+      </div>
+    </div>
+
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+      <div class="product-card text-center">
+        <img src="Chicken maure.jpeg" alt="Chicken Manure" style="height: fit-content;" >
+        <h5>Chicken Manure </h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <h2 class="text-center fw-bold text-success" data-aos="fade-up">What Our Customers Say</h2>
+
+  <div class="row g-4 mt-3">
+
+    <div class="col-md-4" data-aos="flip-left">
+      <div class="testimonial-box">
+        <img src="IMG_20260312_075820_018.jpg">
+        <p>"The chickens are strong and healthy. Excellent service!"</p>
+        <strong>- Mpho K.</strong>
+      </div>
+    </div>
+
+    <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+      <div class="testimonial-box">
+        <img src="IMG_20250211_094953_599.webp">
+        <p>"Fresh eggs every time—fast delivery too!"</p>
+        <strong>- Boitumelo D.</strong>
+      </div>
+    </div>
+
+    <div class="col-md-4" data-aos="flip-left" data-aos-delay="400">
+      <div class="testimonial-box">
+        <img src="IMG_20250127_121801_130.jpg">
+        <p>"Affordable and reliable! Highly recommend."</p>
+        <strong>- Sarah K.</strong>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-5 mb-5">
+  <div class="newsletter-box" data-aos="fade-up">
+    <h2 class="fw-bold">Join Our Newsletter</h2>
+    <p>Get exclusive updates & promotions.</p>
+
+    <form class="row justify-content-center mt-3">
+      <div class="col-md-6">
+        <input type="email" class="form-control mb-3" placeholder="Enter your email">
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-light w-100 fw-bold">Subscribe</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true, easing: 'ease-out' });
+</script>
+
+<script>
+function toggleMobileMenu() {
+  document.getElementById('navLinks').classList.toggle('mobile-active');
+  document.getElementById('hamburger').classList.toggle('active');
+}
+</script>
+
+<footer class="footer">
+  © 2026 Makometsa Poultry. All rights reserved.
+</footer>
+
 </body>
-
 </html>
-
