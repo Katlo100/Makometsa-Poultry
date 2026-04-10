@@ -1,162 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="about">
-    <header>
-        <h1>About Us</h1>
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="About.html">About</a> |
-            <a href="Contact.html">Contact</a>
-        </nav>
-    </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us – Makometsa Poultry</title>
 
-    <main>
-        <h4>Our Prices</h4>
-        <p>We offer competitive prices for our broilers, ensuring affordability without compromising on quality.</p>
-        <h3>Both Live And Dressed Broiler Chicken</h3>
-        <p>P80.00 each.</p>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-        <h4>Bulk Orders</h4>
-        <p>For bulk orders(10+), we offer special pricing.</p>
-        <p>P75.00 each for bulk orders.</p>
+<style>
+.hero-header {
+  height: 90vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+              url('about.popup.jpeg') center/cover no-repeat;
+  position: relative;
+  color: #fff;
+}
 
-        <h2>Who We Are</h2>
-        <p>Makometsa Poultry is a proudly local poultry business based in Gabane</p>
-        <p>We focus on raising strong,healthy broilers using proper feeding and hygiene to ensure top quality for our customers.</p>
+.hero-navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 25px 0;
+  z-index: 50;
+}
 
-        <h2>Our vision</h2>
-        <p>To become one of the leading suppliers in Botswana.</p>
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-        <h2>Our Mission</h2>
-        <p>To deliver fresh and affordable chicken while maintaining high standards.</p>
-    </main>
-   <footer>
-    <p>&copy; 2026 Makometsa Poultry</p>
-   </footer>
-   </body>
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+}
 
-   </html>
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Makometsa Poultry</title>
+.nav-links a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-    <!-- BOOTSTRAP CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+.nav-links a:hover,
+.nav-links a.active {
+  color: #b3ffb3;
+}
 
-    <!-- ICONS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
 
-    <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="styles.css">
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.85);
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    padding: 20px 0;
+  }
+
+  .nav-links.mobile-active {
+    display: flex;
+    animation: fadeDown 0.3s ease;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+}
+
+.hero-content {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.hero-btn {
+  background: #0a5c0a;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.hero-btn:hover {
+  background: #067306;
+  transform: scale(1.05);
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0a5c0a;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.divider-line {
+  width: 80px;
+  height: 4px;
+  background: #0a5c0a;
+  border-radius: 20px;
+  margin: 12px auto 30px;
+}
+
+.values-box {
+  background: rgb(233,231,200);
+  padding: 40px;
+  border-left: 8px solid #0a5c0a;
+  border-radius: 40px;
+  box-shadow: 2px 4px 8px rgba(155,235,89,0.6);
+}
+
+.values-box h4 {
+  margin-top: 20px;
+  font-weight: 700;
+  color: #0a5c0a;
+}
+
+</style>
 </head>
 
 <body>
-        <nav>
-            <a href="index.html">Home</a> 
-            <a href="About.html">About</a> 
-            <a href="Contact.html">Contact</a>
-        </nav>
-<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Makometsa Poultry</a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navMenu">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="About.html" class="nav-link active">About</a></li>
-                <li class="nav-item"><a href="Contact.html" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!-- ✅ HERO SECTION -->
-<section class="hero-section text-center text-white d-flex align-items-center justify-content-center">
-    <div>
-        <h1 class="fw-bold">About Makometsa Poultry</h1>
-        <p>Quality Broilers • Clean • Healthy • Affordable</p>
-    </div>
-</section>
-
-<!-- ✅ ABOUT SECTION -->
-<div class="container my-5">
-    <div class="row g-4">
-
-        <div class="col-md-6">
-            <h2 class="fw-bold mb-3">Who We Are</h2>
-            <p>Makometsa Poultry is a growing local poultry business based in Gabane. 
-            We are committed to raising healthy, strong broilers using clean, hygienic conditions,
-            proper feeding, and high care to ensure top-quality chicken for all our customers.</p>
-
-            <h3 class="mt-4 fw-semibold">Our Vision</h3>
-            <p>To become one of the leading poultry suppliers in Botswana.</p>
-
-            <h3 class="mt-4 fw-semibold">Our Mission</h3>
-            <p>To deliver fresh, healthy, and affordable chicken while maintaining high production standards.</p>
-        </div>
-
-        <div class="col-md-6">
-            <img src="https://images.unsplash.com/photo-1555992336-cbf5d2738b0e" 
-                 class="img-fluid rounded shadow" alt="Poultry Farm">
-        </div>
-    </div>
+  <div id="introPopup" class="intro-popup">
+  <img src="about.popup.jpeg" alt="Makometsa Poultry Products" class="intro-img">
+  <div class="intro-text" style="color: white; font-weight: bold;">
+    <h1>Makometsa Poultry</h1>
+    <p>
+      Quality poultry products you can trust — from fresh chicken 
+      to organic poultry manure for healthier farming.
+    </p>
+    <h1>&#128522</h1>
+  </div>
 </div>
 
-<!-- ✅ PRICES SECTION -->
-<section class="bg-light py-5">
-    <div class="container text-center">
+<header class="hero-header">
+  <nav class="hero-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Makometsa Poultry</a>
 
-        <h2 class="fw-bold mb-4">Our Prices</h2>
+      <div class="hamburger" id="hamburger" aria-label="Toggle navigation"
+           onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
 
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="price-card shadow-sm p-4 rounded bg-white">
-                    <h4 class="fw-bold">Live & Dressed Broilers</h4>
-                    <p class="price">P80.00 each</p>
-                </div>
-            </div>
-
-            <div class="col-md-4 mt-3 mt-md-0">
-                <div class="price-card shadow-sm p-4 rounded bg-white">
-                    <h4 class="fw-bold">Bulk Orders (10+)</h4>
-                    <p class="price text-success fw-bold">P75.00 each</p>
-                </div>
-            </div>
-        </div>
-
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="order.html">Order</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="contact.html">Contact</a></li>
+         <li><a href="Order.html">Order With Us</a></li>
+      </ul>
     </div>
-</section>
+  </nav>
 
-<!-- ✅ JAVASCRIPT FEATURE: PRICE ALERT -->
+  <div class="hero-content" data-aos="fade-up">
+    <h1>About Makometsa Poultry</h1>
+    <p>Delivering quality poultry while supporting communities and sustainable farming.</p>
+    <a href="products.html" class="hero-btn">Explore Products</a>
+  </div>
+</header>
+
+<main>
+<div class="container mt-5">
+  <h2 class="section-title" data-aos="fade-up">Who We Are</h2>
+  <div class="divider-line"></div>
+  <p class="text-center" data-aos="fade-up">
+    Makometsa Poultry is a proudly local poultry enterprise rooted in Gabane, Botswana.
+    We deliver high‑quality poultry products while promoting food security, youth empowerment,
+    and sustainable agriculture.
+  </p>
+
+  <h2 class="section-title" data-aos="fade-up">Our Mission</h2>
+  <div class="divider-line"></div>
+  <p class="text-center" data-aos="fade-up">
+    To supply premium poultry products while empowering communities and practicing ethical farming.
+  </p>
+
+  <h2 class="section-title" data-aos="fade-up">Our Vision</h2>
+  <div class="divider-line"></div>
+  <p class="text-center" data-aos="fade-up">
+    To become Botswana’s most trusted poultry supplier through quality, innovation, and sustainability.
+  </p>
+
+  <h2 class="section-title" data-aos="fade-up">Our Core Values</h2>
+  <div class="divider-line"></div>
+
+  <div class="values-box" data-aos="zoom-in">
+    <h4>Quality</h4><p>Safe, fresh, premium poultry products.</p>
+    <h4>Integrity</h4><p>Honesty and transparency in all operations.</p>
+    <h4>Customer Satisfaction</h4><p>Reliable service you can trust.</p>
+    <h4>Innovation</h4><p>Modern, efficient farming practices.</p>
+    <h4>Responsibility</h4><p>Ethical and environmentally conscious farming.</p>
+    <h4>Community</h4><p>Supporting local growth and opportunities.</p>
+    <h4>Affordability</h4><p>Competitive pricing without compromising quality.</p>
+    <h4>Sustainability</h4><p>Long‑term environmental and economic balance.</p>
+  </div>
+
+</div>
+</main>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        setTimeout(() => {
-            alert("Special Offer: Buy 10+ broilers for only P75 each!");
-        }, 1500);
-    });
+AOS.init({ duration: 900, once: true, easing: "ease-out" });
+
+function toggleMobileMenu() {
+  document.getElementById("navLinks").classList.toggle("mobile-active");
+  document.getElementById("hamburger").classList.toggle("active");
+}
 </script>
 
-<!-- ✅ FOOTER -->
-<footer class="bg-success text-white text-center py-3 mt-4">
-    <p class="mb-0">&copy; 2026 Makometsa Poultry | All Rights Reserved</p>
+<footer class="footer">
+  © 2026 Makometsa Poultry. All rights reserved.
 </footer>
-
-<!-- BOOTSTRAP JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
