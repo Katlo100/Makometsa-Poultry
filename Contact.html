@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact Us - Makometsa Poultry</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet"
+        href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <style>
+    .hero-header {
+      height: 90vh;
+      background: linear-gradient(rgba(0,0,0,0.55),
+                                  rgba(0,0,0,0.55)),
+                                  url('Contact.popup.jpeg') center/cover no-repeat;
+      position: relative;
+      color: white;
+    }
+
+    .hero-navbar {
+      position: absolute;
+      top: 0; width: 100%;
+      padding: 25px 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #b3ffb3;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: white;
+      transition: .3s;
+    }
+
+      @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.85);
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        padding: 20px 0;
+      }
+
+      .nav-links.mobile-active {
+        display: flex;
+        animation: fadeDown .3s ease;
+      }
+
+      @keyframes fadeDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .hamburger { display: flex; }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translateY(8px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-8px);
+      }
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 55%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+    }
+
+    .hero-content p {
+      opacity: .95;
+      font-size: 1.2rem;
+    }
+
+    .contact-box {
+      background: rgb(233,231,200);
+      border-left: 8px solid #0a5c0a;
+      border-radius: 40px;
+      padding: 40px;
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.12);
+      transition: .3s ease;
+      margin-bottom: 40px;
+    }
+
+    .contact-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 22px rgba(0,0,0,0.2);
+    }
+
+    .contact-box h3 {
+      font-weight: 700;
+      color: #0a5c0a;
+    }
+
+    .footer {
+      background: #0a5c0a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 70px;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+  </style>
+</head>
+
+<body>
+   <div id="introPopup" class="intro-popup">
+  <img src="Contact.popup.jpeg" alt="Makometsa Poultry Products" class="intro-img">
+  <div class="intro-text" style="color: white; font-weight: bold;">
+    <h1>Makometsa Poultry</h1>
+    <p>
+      We're here to assist you with orders, inquiries & support.
+    </p>
+    <h1>&#128522</h1>
+  </div>
+</div>
+
+<div id="pagePopup" class="popup-container">
+  <img id="popupImage" src="images/contact-popup.jpg">
+</div>
+
+<header class="hero-header">
+  <nav class="hero-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Makometsa Poultry</a>
+
+      <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+        <li><a href="Contact.html" class="active" style="color: #0a5c0a;">Contact</a></li>
+       <li><a href="Order.html">Order With Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Contact Us</h1>
+    <p>We're here to assist you with orders, inquiries & support.</p>
+  </div>
+</header>
+
+<div class="container mt-5">
+  <div class="contact-box" data-aos="fade-up">
+    <h3>Contact Details</h3>
+    <p>&#128222; <strong>+267 76670294 / 72291357 / 76676358</strong></p>
+    <p>&#128173; WhatsApp:
+      <a href="https://wa.me/26776670294"
+         class="text-success fw-bold" target="_blank">
+         Chat with Makometsa Poultry
+      </a>
+    </p>
+    <p>&#128205; Gabane, Botswana</p>
+    <p>&#127968; Plot 1019, Shaodi Ward</p>
+    <p>&#128233; <a href="mailto:MakometsaPoultry@gmail.com">MakometsaPoultry@gmail.com</a></p>
+  </div>
+
+  <div class="contact-box" data-aos="fade-up" data-aos-delay="200">
+    <h3>Business Hours</h3>
+    <p><strong>Monday–Saturday:</strong> 07:00 – 18:00</p>
+    <p><strong>Sunday:</strong> 08:00 – 14:30</p>
+  </div>
+
+  <div class="contact-box" data-aos="fade-up" data-aos-delay="400">
+    <h3>Follow Us</h3>
+    <p>Stay updated on promotions & farm news:</p>
+
+    <ul class="list-unstyled">
+      <li>&#128073; <a href="https://www.facebook.com/MakometsaPoultry" target="_blank">Facebook</a></li>
+      <li>&#128247; <a href="https://www.instagram.com/MakometsaPoultry" target="_blank">Instagram</a></li>
+      <li>&#128242; <a href="https://www.twitter.com/MakometsaPoultry" target="_blank">Twitter</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true, easing: 'ease-out' });
+</script>
+
+<script>
+function toggleMobileMenu() {
+  document.getElementById('navLinks').classList.toggle('mobile-active');
+  document.getElementById('hamburger').classList.toggle('active');
+}
+</script>
+
+</body>
+
+<footer class="footer">
+  © 2026 Makometsa Poultry. All rights reserved.
+</footer>
+
+</html>
