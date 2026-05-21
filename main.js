@@ -10,18 +10,6 @@ function submitFeedback() {
 }
 
 /* ============================================================
- ✅ AUTO-CLOSE BOOTSTRAP NAV ON MOBILE
-============================================================ */
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-        const menu = document.querySelector(".navbar-collapse");
-        if (menu && menu.classList.contains("show")) {
-            menu.classList.remove("show");
-        }
-    });
-});
-
-/* ============================================================
  ✅ POPUP PREVIEW ANIMATION (USED ON NAVIGATION)
 ============================================================ */
 function showPagePopup(imageSrc, targetPage) {
@@ -83,13 +71,15 @@ function addProductRow() {
     productIndex++;
     const container = document.getElementById("productList");
 
+    if (!container) return;
+
     const row = document.createElement("div");
     row.classList.add("product-row", "row", "align-items-center", "mb-3");
     row.setAttribute("data-id", productIndex);
 
     row.innerHTML = `
         <div class="col-md-3 text-center">
-            <img src="${productData.broilers.img}" class="product-img-${productIndex}" style="max-width:110px;">
+            <img src="${productData.broilers.img}" class="product-img-${productIndex}" style="max-width:110px; margin: 0 auto;">
         </div>
 
         <div class="col-md-3">
@@ -125,14 +115,18 @@ function addProductRow() {
 /* ✅ Update product image */
 function updateProductImage(id) {
     const row = document.querySelector(`[data-id="${id}"]`);
+    if (!row) return;
+    
     const product = row.querySelector(".productSelect").value;
     const imgElem = row.querySelector(`.product-img-${id}`);
-    imgElem.src = productData[product].img;
+    if (imgElem) imgElem.src = productData[product].img;
 }
 
 /* ✅ Update row total */
 function updateRowTotal(id) {
     const row = document.querySelector(`[data-id="${id}"]`);
+    if (!row) return;
+
     const product = row.querySelector(".productSelect").value;
     const qty = parseInt(row.querySelector(".quantityInput").value) || 0;
 
@@ -146,8 +140,11 @@ function updateRowTotal(id) {
 
 /* ✅ Remove row */
 function removeProductRow(id) {
-    document.querySelector(`[data-id="${id}"]`).remove();
-    calculateGrandTotal();
+    const row = document.querySelector(`[data-id="${id}"]`);
+    if (row) {
+        row.remove();
+        calculateGrandTotal();
+    }
 }
 
 /* ✅ Calculate final total including delivery */
@@ -158,62 +155,37 @@ function calculateGrandTotal() {
         sum += parseFloat(input.value.replace("P ", "")) || 0;
     });
 
-    const location = document.getElementById("deliveryLocation").value;
-    const delivery = deliveryFees[location] || 0;
+    const deliveryLocationEl = document.getElementById("deliveryLocation");
+    const deliveryFeeEl = document.getElementById("deliveryFee");
+    const grandTotalEl = document.getElementById("grandTotal");
 
-    document.getElementById("deliveryFee").value = "P " + delivery.toFixed(2);
-    document.getElementById("grandTotal").value = "P " + (sum + delivery).toFixed(2);
-}
+    if (deliveryLocationEl && deliveryFeeEl && grandTotalEl) {
+        const location = deliveryLocationEl.value;
+        const delivery = deliveryFees[location] || 0;
 
-/* ============================================================
- ✅ CART SYSTEM
-============================================================ */
-let cart = [];
-let cartTotal = 0;
-
-function toggleCart() {
-    document.getElementById("cartSidebar").classList.toggle("active");
-}
-
-function addToCart(name, price) {
-    cart.push({ name, price });
-    cartTotal += price;
-
-    updateCartUI();
-
-    document.getElementById("cartIcon").style.transform = "scale(1.2)";
-    setTimeout(() => document.getElementById("cartIcon").style.transform = "scale(1)", 200);
-}
-
-function updateCartUI() {
-    const cartItems = document.getElementById("cartItems");
-    cartItems.innerHTML = "";
-
-    cart.forEach((item, index) => {
-        cartItems.innerHTML += `
-            <div class="cart-item">
-                <span>${item.name} – P${item.price}</span>
-                <button class="btn btn-sm btn-danger" onclick="removeCartItem(${index})">x</button>
-            </div>
-        `;
-    });
-
-    document.getElementById("cartTotal").innerText = cartTotal.toFixed(2);
-    document.getElementById("cartCount").innerText = cart.length;
-}
-
-function removeCartItem(index) {
-    cartTotal -= cart[index].price;
-    cart.splice(index, 1);
-
-    updateCartUI();
+        deliveryFeeEl.value = "P " + delivery.toFixed(2);
+        grandTotalEl.value = "P " + (sum + delivery).toFixed(2);
+    }
 }
 
 /* ============================================================
  ✅ MOBILE NAV MENU
 ============================================================ */
 function toggleMobileMenu() {
-  document.getElementById("navLinks").classList.toggle("mobile-active");
-  document.getElementById("hamburger").classList.toggle("active");
+    const navLinks = document.getElementById("navLinks");
+    const hamburger = document.getElementById("hamburger");
+    
+    if (navLinks) navLinks.classList.toggle("mobile-active");
+    if (hamburger) hamburger.classList.toggle("active");
 }
 
+/* ✅ Auto-close mobile menu when link is clicked */
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        const navLinks = document.getElementById("navLinks");
+        const hamburger = document.getElementById("hamburger");
+        
+        if (navLinks) navLinks.classList.remove("mobile-active");
+        if (hamburger) hamburger.classList.remove("active");
+    });
+});
