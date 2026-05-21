@@ -9,141 +9,177 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-<script src="js/main.js"></script>
 
 <style>
 .hero-header {
-  height: 110vh;
+  height: clamp(60vh, 90vh, 100vh);
+  min-height: 500px;
   background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
               url('Order.popup.jpeg') center/cover no-repeat;
   position: relative;
   color: white;
 }
 
-.hero-navbar {
-  position: absolute;
-  top: 0; width: 100%;
-  padding: 25px 0;
-  z-index: 50;
+.hero-content h1 {
+  font-size: clamp(1.5rem, 6vw, 3.5rem);
+  margin-bottom: 15px;
 }
 
-.nav-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-logo {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: white;
-  text-decoration: none;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.nav-links a {
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-}
-.hamburger span {
-  width: 28px;
-  height: 3px;
-  background: white;
-}
-
-@media (max-width: 900px) {
-  .hamburger { display: flex; }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: rgba(0,0,0,0.85);
-    padding: 20px 0;
-    position: absolute;
-    top: 80px; right: 0;
-  }
-
-  .nav-links.mobile-active {
-    display: flex;
-  }
-
-  .hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translateY(8px);
-  }
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-8px);
-  }
-}
-
-.hero-content {
-  position: absolute;
-  top: 55%; left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+.hero-content p {
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  margin-bottom: 25px;
 }
 
 .order-box {
   background: rgb(233,231,200);
   border-left: 8px solid #0a5c0a;
-  padding: 35px;
-  border-radius: 35px;
+  padding: clamp(20px, 5vw, 40px);
+  border-radius: clamp(20px, 4vw, 35px);
   box-shadow: 2px 4px 10px rgba(0,0,0,0.12);
   margin-bottom: 40px;
-  transition: .25s ease;
+  transition: 0.3s ease;
 }
 
-.order-box:hover { transform: translateY(-4px); }
+.order-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 2px 8px 16px rgba(155, 235, 89, 0.8);
+}
 
-.footer {
-  background: #0a5c0a;
-  color: white;
+.product-row {
+  background: white;
+  border-left: 6px solid #0a5c0a;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.product-row label {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #0a5c0a;
+}
+
+.price-display {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 700;
+  color: #c30000;
+  padding: 10px;
+  background: #f0f0f0;
+  border-radius: 8px;
   text-align: center;
-  padding: 20px;
-  margin-top: 60px;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
 }
 
+.summary-box {
+  background: linear-gradient(135deg, #e9e7c8 0%, #f5f5f5 100%);
+  padding: clamp(20px, 4vw, 30px);
+  border-radius: 15px;
+  border-left: 6px solid #0a5c0a;
+  margin: 25px 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  border-bottom: 1px solid rgba(10, 92, 10, 0.2);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: #0a5c0a;
+  padding-top: 15px;
+  margin-top: 10px;
+  border-top: 2px solid #0a5c0a;
+}
+
+.customer-section {
+  background: white;
+  padding: clamp(20px, 4vw, 30px);
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  margin: 25px 0;
+}
+
+@media (max-width: 1024px) {
+  .product-row {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-header {
+    height: 50vh;
+  }
+
+  .product-row label {
+    font-size: 0.9rem;
+  }
+
+  .order-box {
+    padding: clamp(15px, 3vw, 25px);
+  }
+
+  .summary-box {
+    padding: clamp(15px, 3vw, 20px);
+  }
+
+  .summary-row {
+    padding: 8px 0;
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: clamp(8px 12px, 2vw 3vw, 12px 20px);
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.3rem;
+  }
+
+  .product-row {
+    padding: 10px;
+  }
+
+  .order-box {
+    padding: clamp(12px, 3vw, 20px);
+    border-radius: 15px;
+  }
+
+  .summary-row {
+    padding: 6px 0;
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}
 </style>
 </head>
 
 <body>
-   <div id="introPopup" class="intro-popup">
+<div id="introPopup" class="intro-popup">
   <img src="Order.popup.jpeg" alt="Makometsa Poultry Products" class="intro-img">
   <div class="intro-text" style="color: white; font-weight: bold;">
     <h1>Makometsa Poultry</h1>
-    <p>
-      Place your order for fresh poultry products today!
-    </p>
+    <p>Place your order for fresh poultry products today!</p>
     <h1>&#128522</h1>
   </div>
 </div>
-  
-<header class="hero-header">
 
+<header class="hero-header">
   <nav class="hero-navbar">
     <div class="nav-container">
-
       <a href="index.html" class="nav-logo">Makometsa Poultry</a>
 
       <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
@@ -152,133 +188,219 @@
 
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-        <li><a href="contact.html">Contact</a></li>
-         <li><a href="Order.html">Order With Us</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="Order.html">Order</a></li>
       </ul>
-
     </div>
   </nav>
 
   <div class="hero-content" data-aos="fade-up">
     <h1>Place Your Order</h1>
-      <p>Fast, fresh, and delivered to your doorstep.</p>
-      <a href="products.html" class="hero-btn">Explore Products</a>
+    <p>Fast, fresh, and delivered to your doorstep.</p>
+    <a href="Products.html" class="hero-btn">Explore Products</a>
   </div>
-
 </header>
+
 <div class="container mt-5">
 
+  <!-- How Ordering Works Section -->
   <div class="order-box" data-aos="fade-up">
-    <h3 class="fw-bold mb-3">How Ordering Works</h3>
-    <ol class="text-start">
-      <li>Select products</li>
-      <li>Enter quantity</li>
-      <li>Auto calculate total</li>
-      <li>Enter delivery details</li>
-      <li>Submit order</li>
-    </ol>
-    <p class="text-danger fw-bold">We confirm via WhatsApp or phone within minutes.</p>
+    <h3 class="fw-bold mb-3 text-success">How Ordering Works</h3>
+    <div class="row">
+      <div class="col-md-6">
+        <ol class="text-start">
+          <li>Select your products</li>
+          <li>Enter quantity needed</li>
+          <li>Choose delivery location</li>
+          <li>Fill customer details</li>
+          <li>Submit order</li>
+        </ol>
+      </div>
+      <div class="col-md-6">
+        <p class="text-danger fw-bold mb-0">
+          ✓ Automatic price calculation<br>
+          ✓ Real-time delivery fee updates<br>
+          ✓ We confirm via WhatsApp within minutes
+        </p>
+      </div>
+    </div>
   </div>
 
+  <!-- Order Form Section -->
   <form id="orderForm" class="order-box" data-aos="fade-up" data-aos-delay="150">
     <h2 class="text-center fw-bold text-success mb-4">Order Form</h2>
-    <div id="productList"></div>
-    <button type="button" class="btn btn-success w-100 mb-4" onclick="addProductRow()">+ Add Another Product</button>
 
-    <label class="fw-bold">Delivery Location</label>
-    <select id="deliveryLocation" class="form-control mb-3" onchange="calculateGrandTotal()">
-      <option value="gabane">Gabane – P10</option>
-      <option value="mogoditshane">Mogoditshane – P18</option>
-      <option value="gaborone">Gaborone – P20</option>
-      <option value="Kumakwane">Kumakwane – P12</option>
-      <option value="others">Other Areas – P30</option>
-    </select>
+    <!-- Product Selection -->
+    <div class="mb-4">
+      <h5 class="fw-bold text-success mb-3">Step 1: Select Products</h5>
+      <div id="productList"></div>
+      <button type="button" class="btn btn-success w-100 mb-4" onclick="addProductRow()">
+        <strong>+ Add Product</strong>
+      </button>
+    </div>
 
-    <label class="fw-bold">Delivery Fee</label>
-    <input type="text" id="deliveryFee" class="form-control mb-3" readonly>
+    <!-- Delivery Section -->
+    <div class="mb-4">
+      <h5 class="fw-bold text-success mb-3">Step 2: Delivery Details</h5>
+      
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Delivery Location</label>
+          <select id="deliveryLocation" class="form-control" onchange="updateGrandTotal()">
+            <option value="gabane">Gabane – P10</option>
+            <option value="mogoditshane">Mogoditshane – P18</option>
+            <option value="gaborone" selected>Gaborone – P20</option>
+            <option value="tharollo">Tharollo – P12</option>
+            <option value="others">Other Areas – P30</option>
+          </select>
+        </div>
+      </div>
+    </div>
 
-    <label class="fw-bold">Grand Total</label>
-    <input type="text" id="grandTotal" class="form-control mb-4" readonly>
+    <!-- Order Summary -->
+    <div class="summary-box">
+      <div class="summary-row">
+        <span>Subtotal (Products):</span>
+        <span id="subtotalDisplay" class="price-display">P0.00</span>
+      </div>
+      <div class="summary-row">
+        <span>Delivery Fee:</span>
+        <span id="deliveryFeeDisplay" class="price-display">P20.00</span>
+      </div>
+      <div class="summary-row">
+        <span>GRAND TOTAL:</span>
+        <span id="grandTotalDisplay" class="price-display" style="font-size: clamp(1.2rem, 3vw, 1.5rem); color: #0a5c0a;">P20.00</span>
+      </div>
+    </div>
 
-    <hr>
+    <!-- Hidden fields for form submission -->
+    <input type="hidden" id="subtotalValue" value="0">
+    <input type="hidden" id="deliveryFeeValue" value="20">
+    <input type="hidden" id="grandTotalValue" value="20">
 
-    <h4 class="fw-bold mt-3">Customer Details</h4>
+    <!-- Customer Details Section -->
+    <div class="customer-section">
+      <h5 class="fw-bold text-success mb-4">Step 3: Your Details</h5>
 
-    <label>Full Name</label>
-    <input type="text" class="form-control mb-3" required>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Full Name</label>
+          <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+        </div>
 
-    <label>Delivery Address</label>
-    <textarea class="form-control mb-3" required></textarea>
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Phone Number</label>
+          <input type="tel" id="phoneNumber" class="form-control" placeholder="Enter your phone number" required>
+        </div>
+      </div>
 
-    <label>Phone Number</label>
-    <input type="text" class="form-control mb-4" required>
+      <div class="mb-3">
+        <label class="fw-bold">Delivery Address</label>
+        <textarea id="deliveryAddress" class="form-control" rows="3" placeholder="Enter your complete delivery address" required></textarea>
+      </div>
 
-    <button class="btn btn-primary w-100 py-2 fs-5" onclick="submitOrder()">Submit Order</button>
+      <div class="mb-3">
+        <label class="fw-bold">Special Instructions (Optional)</label>
+        <textarea id="specialInstructions" class="form-control" rows="2" placeholder="Any special requests or instructions?"></textarea>
+      </div>
+    </div>
 
+    <!-- Submit Button -->
+    <button type="button" class="btn btn-success w-100 py-3 fs-5 fw-bold" onclick="submitOrder()">
+      ✓ Submit Order
+    </button>
   </form>
+
 </div>
- 
+
+<footer class="footer">
+  © 2026 Makometsa Poultry. All Rights Reserved.
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
+AOS.init({ duration: 900, once: true, easing: "ease-out" });
+</script>
+
+<script>
+// Delivery fee mapping
+const deliveryFees = {
+  gabane: 10,
+  mogoditshane: 18,
+  gaborone: 20,
+  tharollo: 12,
+  others: 30
+};
+
+// Product catalog with prices
+const products = {
+  broilers: [
+    { name: "Live Chicken", price: 80 },
+    { name: "Dressed Chicken", price: 80 },
+    { name: "Chicken Breasts", price: 65 },
+    { name: "Chicken Thighs", price: 65 },
+    { name: "Chicken Drumsticks", price: 50 },
+    { name: "Chicken Wings", price: 60 },
+    { name: "Chicken Gizzards", price: 50 },
+    { name: "Chicken Liver", price: 50 },
+    { name: "Chicken Feet", price: 40 },
+    { name: "Chicken Necks", price: 30 }
+  ],
+  other: [
+    { name: "Dozen of Eggs", price: 14 },
+    { name: "Chicken Manure (50kg)", price: 150 }
+  ]
+};
+
 let productIndex = 0;
 
 function addProductRow() {
   productIndex++;
 
   const container = document.getElementById("productList");
-
   const row = document.createElement("div");
-  row.className = "row g-3 mb-3 product-row";
+  row.className = "product-row";
   row.dataset.id = productIndex;
 
+  let optionsHTML = '<optgroup label="Broiler Products">';
+  products.broilers.forEach(p => {
+    optionsHTML += `<option value="${p.name}" data-price="${p.price}">${p.name} – P${p.price}</option>`;
+  });
+  optionsHTML += '</optgroup><optgroup label="Other Products">';
+  products.other.forEach(p => {
+    optionsHTML += `<option value="${p.name}" data-price="${p.price}">${p.name} – P${p.price}</option>`;
+  });
+  optionsHTML += '</optgroup>';
+
   row.innerHTML = `
-    <div class="col-md-4">
-      <label>Product</label>
-      <select class="form-control productSelect"
-              onchange="updateRowTotal(${productIndex})">
-        <optgroup label="Broiler Products">
-          <option data-price="80">Live Chicken</option>
-          <option data-price="80">Dressed Chicken</option>
-          <option data-price="65">Chicken Breasts</option>
-          <option data-price="65">Chicken Thighs</option>
-          <option data-price="50">Chicken Drumsticks</option>
-          <option data-price="60">Chicken Wings</option>
-          <option data-price="50">Chicken Gizzards</option>
-          <option data-price="50">Chicken Liver</option>
-          <option data-price="40">Chicken Feet</option>
-          <option data-price="30">Chicken Necks</option>
-        </optgroup>
+    <div class="row g-2 align-items-end">
+      <div class="col-md-5 col-sm-6">
+        <label class="fw-bold">Product</label>
+        <select class="form-control productSelect" onchange="updateRowTotal(${productIndex})">
+          <option value="">-- Select Product --</option>
+          ${optionsHTML}
+        </select>
+      </div>
 
-        <optgroup label="Other Products">
-          <option data-price="14">Dozen of Eggs</option>
-          <option data-price="150">Chicken Manure</option>
-        </optgroup>
-      </select>
-    </div>
+      <div class="col-md-2 col-sm-3">
+        <label class="fw-bold">Qty</label>
+        <input type="number" class="form-control quantityInput" min="1" value="1" oninput="updateRowTotal(${productIndex})">
+      </div>
 
+      <div class="col-md-3 col-sm-3">
+        <label class="fw-bold">Subtotal</label>
+        <div class="price-display">P<span class="rowTotal">0.00</span></div>
+      </div>
 
-    <div class="col-md-3">
-      <label>Quantity</label>
-      <input type="number"
-             class="form-control quantityInput"
-             min="1" value="1"
-             oninput="updateRowTotal(${productIndex})">
-    </div>
-
-    <div class="col-md-3">
-      <label>Subtotal</label>
-      <input type="text"
-             class="form-control rowTotal"
-             readonly>
-    </div>
-
-    <div class="col-md-2 d-flex align-items-end">
-      <button class="btn btn-danger w-100"
-              onclick="removeProductRow(${productIndex})">
-        ✖ Remove
-      </button>
+      <div class="col-md-2 col-sm-12">
+        <button type="button" class="btn btn-danger w-100" onclick="removeProductRow(${productIndex})">
+          ✖
+        </button>
+      </div>
     </div>
   `;
 
@@ -290,61 +412,143 @@ function updateRowTotal(id) {
   const row = document.querySelector(`[data-id="${id}"]`);
   if (!row) return;
 
-  const price = Number(
-    row.querySelector(".productSelect")
-       .selectedOptions[0].dataset.price
-  );
+  const selectEl = row.querySelector(".productSelect");
+  const qtyEl = row.querySelector(".quantityInput");
+  const totalEl = row.querySelector(".rowTotal");
 
-  const qty = Number(row.querySelector(".quantityInput").value) || 0;
+  if (!selectEl.value) {
+    totalEl.textContent = "0.00";
+    updateGrandTotal();
+    return;
+  }
 
+  const price = parseFloat(selectEl.selectedOptions[0].dataset.price) || 0;
+  const qty = parseInt(qtyEl.value) || 0;
   const subtotal = price * qty;
-  row.querySelector(".rowTotal").value = `P${subtotal}`;
 
+  totalEl.textContent = subtotal.toFixed(2);
   updateGrandTotal();
 }
 
 function updateGrandTotal() {
-  let total = 0;
+  let productSubtotal = 0;
 
-  document.querySelectorAll(".rowTotal").forEach(input => {
-    total += Number(input.value.replace("P", "")) || 0;
+  // Calculate product subtotal
+  document.querySelectorAll(".rowTotal").forEach(el => {
+    productSubtotal += parseFloat(el.textContent) || 0;
   });
 
-  document.getElementById("grandTotal").value = `P${total}`;
+  // Get delivery fee
+  const locationEl = document.getElementById("deliveryLocation");
+  const location = locationEl.value;
+  const deliveryFee = deliveryFees[location] || 0;
+
+  // Calculate grand total
+  const grandTotal = productSubtotal + deliveryFee;
+
+  // Update display elements
+  document.getElementById("subtotalDisplay").textContent = `P${productSubtotal.toFixed(2)}`;
+  document.getElementById("deliveryFeeDisplay").textContent = `P${deliveryFee.toFixed(2)}`;
+  document.getElementById("grandTotalDisplay").textContent = `P${grandTotal.toFixed(2)}`;
+
+  // Update hidden fields
+  document.getElementById("subtotalValue").value = productSubtotal.toFixed(2);
+  document.getElementById("deliveryFeeValue").value = deliveryFee.toFixed(2);
+  document.getElementById("grandTotalValue").value = grandTotal.toFixed(2);
 }
 
 function removeProductRow(id) {
   const row = document.querySelector(`[data-id="${id}"]`);
-  if (row) row.remove();
-  updateGrandTotal();
+  if (row) {
+    row.remove();
+    updateGrandTotal();
+  }
 }
 
 function submitOrder() {
-  alert("Thank you for your order! We will contact you shortly to confirm.");
+  // Validate form
+  const fullName = document.getElementById("fullName").value.trim();
+  const phoneNumber = document.getElementById("phoneNumber").value.trim();
+  const deliveryAddress = document.getElementById("deliveryAddress").value.trim();
+  const productCount = document.querySelectorAll(".product-row").length;
 
+  if (!fullName) {
+    alert("❌ Please enter your full name");
+    return;
+  }
+
+  if (!phoneNumber) {
+    alert("❌ Please enter your phone number");
+    return;
+  }
+
+  if (!deliveryAddress) {
+    alert("❌ Please enter your delivery address");
+    return;
+  }
+
+  if (productCount === 0) {
+    alert("❌ Please add at least one product");
+    return;
+  }
+
+  // Validate all products are selected
+  const unselectedProducts = Array.from(document.querySelectorAll(".productSelect")).filter(el => !el.value);
+  if (unselectedProducts.length > 0) {
+    alert("❌ Please select a product for all rows");
+    return;
+  }
+
+  // Prepare order summary
+  const grandTotal = document.getElementById("grandTotalDisplay").textContent;
+  const deliveryLocation = document.getElementById("deliveryLocation").selectedOptions[0].text;
+
+  const orderSummary = `
+✅ ORDER CONFIRMED!
+
+Customer: ${fullName}
+Phone: ${phoneNumber}
+Address: ${deliveryAddress}
+Delivery Location: ${deliveryLocation}
+Grand Total: ${grandTotal}
+
+We will contact you shortly to confirm your order!
+Thank you for choosing Makometsa Poultry!
+  `;
+
+  alert(orderSummary);
+
+  // Reset form
   document.getElementById("orderForm").reset();
   document.getElementById("productList").innerHTML = "";
-  document.getElementById("grandTotal").value = "P0";
+  productIndex = 0;
+  updateGrandTotal();
 }
-</script>
 
-</form>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({ duration: 900, once: true, easing: "ease-out" });
-</script>
-
-<script>
 function toggleMobileMenu() {
-  document.getElementById("navLinks").classList.toggle("mobile-active");
-  document.getElementById("hamburger").classList.toggle("active");
+  const navLinks = document.getElementById("navLinks");
+  const hamburger = document.getElementById("hamburger");
+
+  if (navLinks) navLinks.classList.toggle("mobile-active");
+  if (hamburger) hamburger.classList.toggle("active");
 }
+
+// Auto-close mobile menu when link is clicked
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    const navLinks = document.getElementById("navLinks");
+    const hamburger = document.getElementById("hamburger");
+
+    if (navLinks) navLinks.classList.remove("mobile-active");
+    if (hamburger) hamburger.classList.remove("active");
+  });
+});
+
+// Initialize with one product row
+window.addEventListener("load", () => {
+  addProductRow();
+});
 </script>
+
 </body>
-
-<footer class="footer">
-  © 2026 Makometsa Poultry. All Rights Reserved.
-</footer>
-
 </html>
