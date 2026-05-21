@@ -28,13 +28,17 @@ a {
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
+/* ============================================================
+   NAVIGATION & HEADER
+============================================================ */
 .hero-navbar {
     position: absolute;
     top: 0;
     width: 100%;
-    padding: 25px 0;
+    padding: 20px 0;
     z-index: 100;
     background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
@@ -50,11 +54,12 @@ img {
 }
 
 .nav-logo {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
     font-weight: 800;
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
+    white-space: nowrap;
 }
 
 .nav-logo:hover {
@@ -64,7 +69,8 @@ img {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 25px;
+    gap: clamp(10px, 3vw, 25px);
+    align-items: center;
 }
 
 .nav-links a {
@@ -74,6 +80,7 @@ img {
     padding: 8px 12px;
     border-radius: 4px;
     transition: 0.3s;
+    font-size: clamp(0.85rem, 2vw, 1rem);
 }
 
 .nav-links a:hover,
@@ -85,7 +92,7 @@ img {
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
     cursor: pointer;
     background: none;
     border: none;
@@ -93,69 +100,19 @@ img {
 }
 
 .hamburger span {
-    width: 28px;
+    width: 25px;
     height: 3px;
     background: #fff;
     transition: 0.3s;
     display: block;
 }
 
-@media (max-width: 900px) {
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.95);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        padding: 20px 0;
-        gap: 0;
-    }
-
-    .nav-links li {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 15px 20px;
-        border-radius: 0;
-    }
-
-    .nav-links.mobile-active {
-        display: flex;
-        animation: dropDown 0.3s ease forwards;
-    }
-
-    @keyframes dropDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translateY(8px);
-    }
-    .hamburger.active span:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translateY(-8px);
-    }
-}
-
+/* ============================================================
+   HERO SECTION
+============================================================ */
 .hero-header {
     height: 90vh;
+    min-height: 500px;
     background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));
     background-size: cover;
     background-position: center;
@@ -174,19 +131,21 @@ img {
     transform: translate(-50%, -50%);
     text-align: center;
     width: 90%;
-    max-width: 800px;
+    max-width: 900px;
+    padding: 20px;
 }
 
 .hero-content h1 {
-    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-size: clamp(1.8rem, 8vw, 4rem);
     font-weight: 800;
     color: white;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .hero-content p {
-    font-size: clamp(1rem, 4vw, 1.3rem);
-    margin-bottom: 25px;
+    font-size: clamp(0.9rem, 4vw, 1.4rem);
+    margin-bottom: 30px;
     opacity: 0.95;
 }
 
@@ -194,13 +153,14 @@ img {
     display: inline-block;
     background: #0a5c0a;
     color: white;
-    padding: 14px 35px;
+    padding: clamp(12px 25px, 2vw 4vw, 16px 40px);
     border-radius: 30px;
     font-weight: 700;
     text-decoration: none;
     border: 2px solid #0a5c0a;
     transition: 0.3s;
     cursor: pointer;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 .hero-btn:hover {
@@ -209,6 +169,9 @@ img {
     transform: scale(1.05);
 }
 
+/* ============================================================
+   CARDS & COMPONENTS
+============================================================ */
 .feature-card,
 .product-card,
 .testimonial-box,
@@ -217,8 +180,8 @@ img {
 .feedback-box,
 .order-box {
     background: rgb(233, 231, 200);
-    padding: 40px;
-    border-radius: 40px;
+    padding: clamp(20px, 5vw, 40px);
+    border-radius: clamp(20px, 5vw, 40px);
     border-left: 8px solid #0a5c0a;
     box-shadow: 2px 4px 8px rgba(155, 235, 89, 0.6);
     transition: 0.3s ease;
@@ -239,11 +202,12 @@ img {
     border-left: 0;
     padding-bottom: 20px;
     overflow: hidden;
+    border-radius: clamp(12px, 3vw, 20px);
 }
 
 .product-card img {
     width: 100%;
-    height: 240px;
+    height: clamp(180px, 40vw, 280px);
     object-fit: cover;
     border-radius: 0;
 }
@@ -252,18 +216,26 @@ img {
     transform: scale(1.05);
 }
 
+.product-card h5 {
+    padding: 15px;
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+}
+
 .price-tag {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 3vw, 1.3rem);
     color: #c30000;
     font-weight: bold;
 }
 
+/* ============================================================
+   SECTIONS & LAYOUT
+============================================================ */
 .section-title {
-    font-size: 2.2rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     font-weight: 700;
     color: #0a5c0a;
     text-align: center;
-    margin-top: 60px;
+    margin-top: clamp(40px, 8vw, 60px);
     margin-bottom: 15px;
 }
 
@@ -275,11 +247,16 @@ img {
     margin: 0 auto 30px;
 }
 
+/* ============================================================
+   FORMS
+============================================================ */
 .form-control {
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 12px;
+    padding: clamp(10px, 2vw, 12px);
     transition: 0.3s;
+    font-size: 1rem;
+    width: 100%;
 }
 
 .form-control:focus {
@@ -288,6 +265,9 @@ img {
     outline: none;
 }
 
+/* ============================================================
+   PRODUCT ROWS (Order Form)
+============================================================ */
 .product-row {
     background: white;
     border-left: 6px solid #0a5c0a;
@@ -306,16 +286,21 @@ img {
     background: white;
 }
 
+/* ============================================================
+   BUTTONS
+============================================================ */
 .btn {
     border-radius: 8px;
     font-weight: 600;
     transition: 0.3s;
     cursor: pointer;
+    padding: clamp(8px 15px, 2vw 3vw, 12px 24px);
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    border: none;
 }
 
 .btn-success {
     background: #0a5c0a;
-    border: none;
     color: white;
 }
 
@@ -326,17 +311,30 @@ img {
 
 .btn-danger {
     background: #dc3545;
-    border: none;
+    color: white;
 }
 
 .btn-danger:hover {
     background: #c82333;
 }
 
+.btn-light {
+    background: white;
+    color: #0a5c0a;
+    border: 1px solid #ddd;
+}
+
+.btn-light:hover {
+    background: #f0f0f0;
+}
+
+/* ============================================================
+   CART
+============================================================ */
 .cart-icon {
     position: fixed;
-    top: 100px;
-    right: 25px;
+    top: clamp(60px, 10vw, 100px);
+    right: clamp(15px, 3vw, 25px);
     background: #0a5c0a;
     color: white;
     padding: 12px 18px;
@@ -346,6 +344,7 @@ img {
     z-index: 9999;
     transition: 0.3s;
     font-weight: 600;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
 }
 
 .cart-icon:hover {
@@ -377,8 +376,12 @@ img {
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #eee;
+    font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
+/* ============================================================
+   INTRO POPUP
+============================================================ */
 .intro-popup {
     position: fixed;
     top: 0;
@@ -407,16 +410,17 @@ img {
     text-align: center;
     color: white;
     z-index: 1000;
+    padding: 20px;
 }
 
 .intro-text h1 {
     color: white;
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 6vw, 3rem);
     margin-bottom: 15px;
 }
 
 .intro-text p {
-    font-size: 1.1rem;
+    font-size: clamp(0.85rem, 3vw, 1.3rem);
     margin-bottom: 10px;
 }
 
@@ -439,12 +443,15 @@ img {
     }
 }
 
+/* ============================================================
+   FOOTER
+============================================================ */
 .footer {
     background: #0a5c0a;
     color: white;
     text-align: center;
-    padding: 30px 20px;
-    margin-top: 80px;
+    padding: clamp(20px, 4vw, 30px);
+    margin-top: clamp(50px, 8vw, 80px);
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
 }
@@ -458,6 +465,9 @@ img {
     text-decoration: underline;
 }
 
+/* ============================================================
+   UTILITY CLASSES
+============================================================ */
 .text-success {
     color: #0a5c0a !important;
 }
@@ -486,25 +496,54 @@ img {
     margin-top: 1rem;
 }
 
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
 .px-3 {
     padding: 0 1rem;
 }
 
+.w-100 {
+    width: 100%;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+/* ============================================================
+   GRID LAYOUT
+============================================================ */
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 10px;
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: clamp(1rem, 3vw, 2rem);
 }
 
-.col-md-4 {
-    flex: 1 1 calc(33.333% - 1.5rem);
-    min-width: 250px;
+.col-md-1 {
+    flex: 1 1 calc(8.333% - 1.5rem);
+    min-width: 70px;
+}
+
+.col-md-2 {
+    flex: 1 1 calc(16.666% - 1.5rem);
+    min-width: 140px;
 }
 
 .col-md-3 {
@@ -512,9 +551,14 @@ img {
     min-width: 200px;
 }
 
+.col-md-4 {
+    flex: 1 1 calc(33.333% - 1.5rem);
+    min-width: 250px;
+}
+
 .col-md-6 {
     flex: 1 1 calc(50% - 1.5rem);
-    min-width: 250px;
+    min-width: 280px;
 }
 
 .g-4 {
@@ -525,72 +569,9 @@ img {
     gap: 1.5rem;
 }
 
-.mt-2 {
-    margin-top: 0.5rem;
-}
-
-@media (max-width: 768px) {
-    .col-md-4,
-    .col-md-3,
-    .col-md-6 {
-        flex: 1 1 100%;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-        margin-top: 40px;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .feature-card,
-    .product-card,
-    .testimonial-box,
-    .values-box,
-    .contact-box,
-    .feedback-box,
-    .order-box {
-        padding: 25px;
-    }
-
-    .cart-sidebar {
-        width: 100%;
-        right: -100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 1.5rem;
-    }
-
-    .hero-content p {
-        font-size: 0.9rem;
-    }
-
-    .hero-btn {
-        padding: 10px 25px;
-        font-size: 0.9rem;
-    }
-
-    .nav-logo {
-        font-size: 1.3rem;
-    }
-
-    .feature-card,
-    .product-card,
-    .testimonial-box,
-    .values-box,
-    .contact-box,
-    .feedback-box,
-    .order-box {
-        padding: 20px;
-        border-radius: 25px;
-    }
-}
-
+/* ============================================================
+   ANIMATIONS
+============================================================ */
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
@@ -644,7 +625,7 @@ img {
 }
 
 .rating-stars span {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     cursor: pointer;
     color: #ccc;
     transition: 0.2s;
@@ -653,4 +634,242 @@ img {
 .rating-stars span:hover,
 .rating-stars span.active {
     color: gold;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS - TABLET (1024px down)
+============================================================ */
+@media (max-width: 1024px) {
+    .col-md-4,
+    .col-md-3,
+    .col-md-2,
+    .col-md-6 {
+        flex: 1 1 calc(50% - 1.5rem);
+    }
+
+    .hero-navbar {
+        padding: 15px 0;
+    }
+
+    .cart-sidebar {
+        width: 300px;
+        right: -300px;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS - MOBILE (768px down)
+============================================================ */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 15px 0;
+        gap: 0;
+    }
+
+    .nav-links li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 15px 20px;
+        border-radius: 0;
+    }
+
+    .nav-links.mobile-active {
+        display: flex;
+        animation: dropDown 0.3s ease forwards;
+    }
+
+    @keyframes dropDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translateY(8px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translateY(-8px);
+    }
+
+    .col-md-4,
+    .col-md-3,
+    .col-md-2,
+    .col-md-1,
+    .col-md-6 {
+        flex: 1 1 100%;
+    }
+
+    .hero-header {
+        height: 60vh;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(1.3rem, 6vw, 2.5rem);
+    }
+
+    .hero-content p {
+        font-size: clamp(0.8rem, 3vw, 1rem);
+    }
+
+    .section-title {
+        font-size: clamp(1.3rem, 4vw, 2rem);
+        margin-top: 30px;
+    }
+
+    .cart-sidebar {
+        width: 100%;
+        right: -100%;
+    }
+
+    .product-card img {
+        height: clamp(160px, 50vw, 240px);
+    }
+
+    .row {
+        gap: clamp(0.75rem, 2vw, 1.5rem);
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS - SMALL MOBILE (480px down)
+============================================================ */
+@media (max-width: 480px) {
+    .nav-logo {
+        font-size: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    .hero-header {
+        height: 50vh;
+        min-height: 400px;
+    }
+
+    .hero-content {
+        padding: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+        margin-bottom: 15px;
+    }
+
+    .hero-content p {
+        font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+        margin-bottom: 20px;
+    }
+
+    .hero-btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .feature-card,
+    .product-card,
+    .testimonial-box,
+    .values-box,
+    .contact-box,
+    .feedback-box,
+    .order-box {
+        padding: clamp(15px, 4vw, 25px);
+        border-radius: 15px;
+    }
+
+    .product-card img {
+        height: 150px;
+    }
+
+    .product-card h5 {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .cart-icon {
+        padding: 10px 14px;
+        font-size: 0.75rem;
+        top: 55px;
+        right: 10px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .row {
+        gap: 0.75rem;
+    }
+
+    .container {
+        width: 97%;
+    }
+
+    .intro-text h1 {
+        font-size: clamp(1.2rem, 5vw, 2rem);
+    }
+
+    .intro-text p {
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+    }
+
+    .form-control {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================================
+   EXTRA SMALL DEVICES (Below 360px)
+============================================================ */
+@media (max-width: 360px) {
+    .nav-logo {
+        font-size: 0.85rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
 }
