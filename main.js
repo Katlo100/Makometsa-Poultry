@@ -143,3 +143,59 @@ document.querySelectorAll(".nav-links a").forEach(link => {
         document.getElementById("hamburger")?.classList.remove("active");
     });
 });
+
+let cart = [];
+
+const cartIcon = document.getElementById("cartIcon");
+const cartSidebar = document.getElementById("cartSidebar");
+const closeCart = document.getElementById("closeCart");
+
+cartIcon.onclick = () => cartSidebar.classList.toggle("active");
+closeCart.onclick = () => cartSidebar.classList.remove("active");
+
+document.querySelectorAll(".add-cart").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const name = btn.dataset.name;
+        const price = parseFloat(btn.dataset.price);
+
+        const existing = cart.find(item => item.name === name);
+
+        if (existing) existing.qty++;
+        else cart.push({ name, price, qty: 1 });
+
+        updateCart();
+    });
+});
+
+function updateCart() {
+    const items = document.getElementById("cartItems");
+    const count = document.getElementById("cartCount");
+    const totalEl = document.getElementById("cartTotal");
+
+    let total = 0;
+    items.innerHTML = "";
+
+    cart.forEach(item => {
+        total += item.price * item.qty;
+
+        items.innerHTML += `
+          <div class="cart-item">
+            ${item.name} x${item.qty} - P${(item.price * item.qty).toFixed(2)}
+          </div>
+        `;
+    });
+
+    count.textContent = cart.reduce((s,i)=>s+i.qty,0);
+    totalEl.textContent = total.toFixed(2);
+}
+
+document.getElementById("hamburger").onclick = () => {
+    document.getElementById("navLinks").classList.toggle("active");
+};
+
+document.body.style.overflow = "hidden";
+
+setTimeout(() => {
+    document.getElementById("introPopup").style.display = "none";
+    document.body.style.overflow = "auto";
+}, 2000);
