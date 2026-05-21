@@ -1,6 +1,17 @@
-/* ============================================================
- ✅ SIMPLE SUCCESS POPUPS
-============================================================ */
+const productData = {
+    broilers: { price: 45, img: "images/broilers.jpg", name: "Broiler Chicken" },
+    eggs: { price: 20, img: "images/eggs.jpg", name: "Egg Tray" },
+    feed: { price: 180, img: "images/feed.jpg", name: "Chicken Feed 50kg" }
+};
+
+const deliveryFees = {
+    gabane: 10,
+    mogoditshane: 18,
+    gaborone: 20,
+    tharollo: 12,
+    others: 30
+};
+
 function submitOrder() {
     window.location.href = "success.html";
 }
@@ -9,9 +20,6 @@ function submitFeedback() {
     alert("✅ Thank you! Your feedback has been received.");
 }
 
-/* ============================================================
- ✅ POPUP PREVIEW ANIMATION (USED ON NAVIGATION)
-============================================================ */
 function showPagePopup(imageSrc, targetPage) {
     const popup = document.getElementById("pagePopup");
     const popupImg = document.getElementById("popupImage");
@@ -21,171 +29,117 @@ function showPagePopup(imageSrc, targetPage) {
     popupImg.src = imageSrc;
     popup.classList.add("active");
 
-    popupImg.style.opacity = "0";
-    setTimeout(() => popupImg.style.opacity = "1", 100);
-
     setTimeout(() => {
         window.location.href = targetPage;
-    }, 1400);
+    }, 1200);
 }
 
 document.querySelectorAll("[data-popup]").forEach(link => {
-    link.addEventListener("click", event => {
-        event.preventDefault();
-
-        const img = link.getAttribute("data-popup");
-        const href = link.getAttribute("href");
-
-        if (!img || !href) return;
-
-        showPagePopup(img, href);
+    link.addEventListener("click", e => {
+        e.preventDefault();
+        showPagePopup(link.dataset.popup, link.href);
     });
 });
 
-/* ============================================================
- ✅ PRODUCT DATA (Editable Anytime)
-============================================================ */
-const productData = {
-    broilers: { price: 45, img: "images/broilers.jpg", name: "Broiler Chicken" },
-    eggs: { price: 20, img: "images/eggs.jpg", name: "Egg Tray" },
-    feed: { price: 180, img: "images/feed.jpg", name: "Chicken Feed 50kg" }
-};
-
-/* ============================================================
- ✅ DELIVERY FEES
-============================================================ */
-const deliveryFees = {
-    gabane: 10,
-    mogoditshane: 18,
-    gaborone: 20,
-    tharollo: 12,
-    others: 30
-};
-
-/* ============================================================
- ✅ DYNAMIC ORDER FORM BUILDER
-============================================================ */
 let productIndex = 0;
 
 function addProductRow() {
-    productIndex++;
     const container = document.getElementById("productList");
-
     if (!container) return;
 
+    productIndex++;
+
     const row = document.createElement("div");
-    row.classList.add("product-row", "row", "align-items-center", "mb-3");
-    row.setAttribute("data-id", productIndex);
+    row.className = "product-row row";
+    row.dataset.id = productIndex;
 
     row.innerHTML = `
-        <div class="col-md-3 text-center">
-            <img src="${productData.broilers.img}" class="product-img-${productIndex}" style="max-width:110px; margin: 0 auto;">
+        <div class="col-3 text-center">
+            <img src="${productData.broilers.img}" class="product-img">
         </div>
 
-        <div class="col-md-3">
-            <label>Product</label>
-            <select class="form-control productSelect"
-                onchange="updateProductImage(${productIndex}); updateRowTotal(${productIndex});">
-                <option value="broilers">Broilers</option>
-                <option value="eggs">Eggs</option>
-                <option value="feed">Feed</option>
+        <div class="col-3">
+            <select class="form-control productSelect">
+                ${Object.keys(productData).map(p =>
+                    `<option value="${p}">${productData[p].name}</option>`
+                ).join("")}
             </select>
         </div>
 
-        <div class="col-md-2">
-            <label>Quantity</label>
-            <input type="number" class="form-control quantityInput" min="1" value="1"
-                   oninput="updateRowTotal(${productIndex})">
+        <div class="col-2">
+            <input type="number" class="form-control quantityInput" min="1" value="1">
         </div>
 
-        <div class="col-md-3">
-            <label>Total</label>
+        <div class="col-3">
             <input type="text" class="form-control rowTotal" readonly>
         </div>
 
-        <div class="col-md-1">
-            <button class="btn btn-danger mt-4" onclick="removeProductRow(${productIndex})">✖</button>
+        <div class="col-1">
+            <button class="btn btn-danger removeBtn">✖</button>
         </div>
     `;
 
     container.appendChild(row);
-    updateRowTotal(productIndex);
+
+    const select = row.querySelector(".productSelect");
+    const qty = row.querySelector(".quantityInput");
+    const removeBtn = row.querySelector(".removeBtn");
+
+    select.addEventListener("change", () => updateRow(row));
+    qty.addEventListener("input", () => updateRow(row));
+    removeBtn.addEventListener("click", () => {
+        row.remove();
+        calculateTotal();
+    });
+
+    updateRow(row);
 }
 
-/* ✅ Update product image */
-function updateProductImage(id) {
-    const row = document.querySelector(`[data-id="${id}"]`);
-    if (!row) return;
-    
-    const product = row.querySelector(".productSelect").value;
-    const imgElem = row.querySelector(`.product-img-${id}`);
-    if (imgElem) imgElem.src = productData[product].img;
-}
-
-/* ✅ Update row total */
-function updateRowTotal(id) {
-    const row = document.querySelector(`[data-id="${id}"]`);
-    if (!row) return;
-
+function updateRow(row) {
     const product = row.querySelector(".productSelect").value;
     const qty = parseInt(row.querySelector(".quantityInput").value) || 0;
 
-    const price = productData[product].price;
-    const total = price * qty;
+    const data = productData[product];
 
-    row.querySelector(".rowTotal").value = "P " + total.toFixed(2);
+   
+    row.querySelector(".product-img").src = data.img;
 
-    calculateGrandTotal();
+  
+    const total = data.price * qty;
+    row.querySelector(".rowTotal").value = `P ${total.toFixed(2)}`;
+
+    calculateTotal();
 }
 
-/* ✅ Remove row */
-function removeProductRow(id) {
-    const row = document.querySelector(`[data-id="${id}"]`);
-    if (row) {
-        row.remove();
-        calculateGrandTotal();
-    }
-}
-
-/* ✅ Calculate final total including delivery */
-function calculateGrandTotal() {
+function calculateTotal() {
     let sum = 0;
 
-    document.querySelectorAll(".rowTotal").forEach(input => {
-        sum += parseFloat(input.value.replace("P ", "")) || 0;
+    document.querySelectorAll(".rowTotal").forEach(el => {
+        sum += parseFloat(el.value.replace("P ", "")) || 0;
     });
 
-    const deliveryLocationEl = document.getElementById("deliveryLocation");
+    const location = document.getElementById("deliveryLocation");
     const deliveryFeeEl = document.getElementById("deliveryFee");
     const grandTotalEl = document.getElementById("grandTotal");
 
-    if (deliveryLocationEl && deliveryFeeEl && grandTotalEl) {
-        const location = deliveryLocationEl.value;
-        const delivery = deliveryFees[location] || 0;
+    if (!location || !deliveryFeeEl || !grandTotalEl) return;
 
-        deliveryFeeEl.value = "P " + delivery.toFixed(2);
-        grandTotalEl.value = "P " + (sum + delivery).toFixed(2);
-    }
+    const delivery = deliveryFees[location.value] || 0;
+
+    deliveryFeeEl.value = `P ${delivery.toFixed(2)}`;
+    grandTotalEl.value = `P ${(sum + delivery).toFixed(2)}`;
 }
 
-/* ============================================================
- ✅ MOBILE NAV MENU
-============================================================ */
+document.getElementById("deliveryLocation")?.addEventListener("change", calculateTotal);
+
 function toggleMobileMenu() {
-    const navLinks = document.getElementById("navLinks");
-    const hamburger = document.getElementById("hamburger");
-    
-    if (navLinks) navLinks.classList.toggle("mobile-active");
-    if (hamburger) hamburger.classList.toggle("active");
+    document.getElementById("navLinks")?.classList.toggle("active");
+    document.getElementById("hamburger")?.classList.toggle("active");
 }
 
-/* ✅ Auto-close mobile menu when link is clicked */
 document.querySelectorAll(".nav-links a").forEach(link => {
     link.addEventListener("click", () => {
-        const navLinks = document.getElementById("navLinks");
-        const hamburger = document.getElementById("hamburger");
-        
-        if (navLinks) navLinks.classList.remove("mobile-active");
-        if (hamburger) hamburger.classList.remove("active");
+        document.getElementById("navLinks")?.classList.remove("active");
+        document.getElementById("hamburger")?.classList.remove("active");
     });
 });
