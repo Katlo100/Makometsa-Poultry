@@ -6,7 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+<script src="js/main.js"></script>
 
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
@@ -23,7 +26,6 @@
   font-size: 3rem;
   font-weight: 800;
 }
-
 .feedback-box {
   background: rgb(233,231,200);
   border-left: 8px solid #0a5c0a;
@@ -33,99 +35,42 @@
   box-shadow: 2px 4px 8px rgba(155,235,89,0.8);
   transition: 0.3s ease;
 }
-
 .feedback-box:hover {
   transform: translateY(-5px);
 }
-
 .rating-stars span {
   font-size: 2rem;
   cursor: pointer;
   color: #ccc;
-  margin-right: 10px;
 }
-
 .rating-stars span:hover,
 .rating-stars span.active {
   color: gold;
 }
 
-.footer {
-  background: #0a5c0a;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-  margin-top: 70px;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-}
-
-.intro-popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-}
-
-.intro-popup.show {
-  display: flex;
-}
-
-.intro-img {
-  width: 400px;
-  max-width: 90%;
-  border-radius: 20px;
-}
-
-.intro-text {
-  text-align: center;
-  position: absolute;
-  bottom: 50px;
-}
-
-@media (max-width: 768px) {
-  .intro-img {
-    width: 250px;
-  }
-  
-  .intro-text h1 {
-    font-size: 1.5rem;
-  }
-  
-  .intro-text h4 {
-    font-size: 1rem;
-  }
-}
 </style>
 </head>
 
 <body>
 <div id="introPopup" class="intro-popup">
-  <div style="text-align: center;">
-    <img src="Feedback.popup.jpeg" alt="Makometsa Poultry Products" class="intro-img">
-    <div class="intro-text" style="color: white; font-weight: bold;">
-      <h1>Makometsa Poultry</h1>
-      <h4>Share your experience with us and help us improve!</h4>
-      <h1>😊</h1>
-    </div>
+  <img src="Feedback.popup.jpeg" alt="Makometsa Poultry Products" class="intro-img">
+  <div class="intro-text" style="color: white; font-weight: bold;">
+    <h1>Makometsa Poultry</h1>
+    <h4>Share your experience with us and help us improve!</h4>
+    <h1>&#128522</h1>
   </div>
 </div>
 
 <header class="hero-header">
   <nav class="hero-navbar">
     <div class="nav-container">
+
       <a href="index.html" class="nav-logo">Makometsa Poultry</a>
       <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
       </div>
 
-      <ul class="nav-links" id="navLinks">
+        <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="About.html">About</a></li>
         <li><a href="Products.html">Products</a></li>
@@ -139,8 +84,9 @@
   <div class="hero-content" data-aos="fade-up">
     <h1>We Value Your Feedback</h1>
     <p>Your thoughts help us grow and improve our services.</p>
-    <a href="Products.html" class="hero-btn">Explore Products</a>
+    <a href="products.html" class="hero-btn">Explore Products</a>
   </div>
+
 </header>
 
 <div class="container mt-5">
@@ -173,80 +119,45 @@
       <span onclick="setRating(5)">★</span>
     </div>
 
-    <form id="feedbackForm" data-aos="fade-up" data-aos-delay="200">
+      <form onsubmit="submitFeedback(); return false;" data-aos="fade-up" data-aos-delay="200">
       <label class="fw-bold">Your Name</label>
-      <input type="text" class="form-control mb-3" name="name" required>
-
-      <label class="fw-bold">Your Email</label>
-      <input type="email" class="form-control mb-3" name="email" required>
+      <input type="text" class="form-control mb-3" required>
 
       <label class="fw-bold">Message</label>
-      <textarea class="form-control mb-3" name="message" rows="5" required></textarea>
+      <textarea class="form-control mb-3" rows="5" required></textarea>
 
-      <button type="submit" class="btn btn-success w-100 py-2 fs-5">Submit Feedback</button>
+      <button class="btn btn-success w-100 py-2 fs-5">Submit Feedback</button>
     </form>
   </div>
 </div>
 
-<footer class="footer">
-  © 2026 Makometsa Poultry. All rights reserved.
-</footer>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <script>
-// Initialize AOS
-AOS.init({ duration: 900, once: true, easing: "ease-out" });
-
-// Rating system
 function setRating(stars) {
   const allStars = document.querySelectorAll("#ratingStars span");
   allStars.forEach((star, index) => {
     star.classList.toggle("active", index < stars);
   });
 }
+</script>
 
-// Mobile menu toggle
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true, easing: "ease-out" });
+</script>
+
+<script>
 function toggleMobileMenu() {
   document.getElementById("navLinks").classList.toggle("mobile-active");
   document.getElementById("hamburger").classList.toggle("active");
 }
-
-// Form submission
-document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const name = document.querySelector('input[name="name"]').value;
-  const email = document.querySelector('input[name="email"]').value;
-  const message = document.querySelector('textarea[name="message"]').value;
-  const rating = document.querySelectorAll('#ratingStars span.active').length;
-  
-  if (rating === 0) {
-    alert('Please select a rating');
-    return;
-  }
-  
-  // Log feedback (you can replace this with actual backend submission)
-  console.log({
-    name: name,
-    email: email,
-    message: message,
-    rating: rating
-  });
-  
-  // Show success message
-  alert('Thank you for your feedback! We appreciate your input.');
-  
-  // Reset form
-  this.reset();
-  document.querySelectorAll('#ratingStars span').forEach(star => star.classList.remove('active'));
-});
-
-// Show intro popup on page load (optional - comment out if not needed)
-// window.addEventListener('load', function() {
-//   document.getElementById('introPopup').classList.add('show');
-// });
 </script>
 
 </body>
+
+<footer class="footer">
+  © 2026 Makometsa Poultry. All rights reserved.
+</footer>
+
 </html>
