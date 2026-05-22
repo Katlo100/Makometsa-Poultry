@@ -5,154 +5,220 @@
 <title>Makometsa Poultry – Fresh Poultry Delivered</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="styleref="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.minNTRO -->
-<div id="introPopup" class="intro-popup">
-  <img src="Index.Popup.jpeg"ss="intro-text">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+.hero-header {
+  height: 90vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+              url('Index.Popup.jpeg') center/cover no-repeat;
+  position: relative;
+  color: white;
+}
+
+.feature-card {
+  background: rgb(233,231,200);
+  border-radius: 40px;
+  padding: 40px;
+  box-shadow: 2px 4px 8px rgba(155,235,89,0.8);
+  border-left: 8px solid #0a5c0a;
+  transition: .3s;
+  text-align:center;
+}
+.feature-card:hover { transform:translateY(-8px); }
+
+.product-card {
+  background:white;
+  border-radius:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.12);
+  transition:.3s;
+  padding-bottom:20px;
+}
+.product-card:hover { transform:scale(1.05); }
+.product-card img {
+  width:100%; height:240px;
+  border-radius:20px 20px 0 0;
+  object-fit:cover;
+}
+
+.testimonial-box {
+  background:rgb(233,231,200);
+  border-radius:40px;
+  padding:35px;
+  border-left:8px solid #0a5c0a;
+  text-align:center;
+  transition:.3s;
+}
+.testimonial-box:hover { transform:translateY(-5px); }
+.testimonial-box img {
+  width:80px; border-radius:50%; margin-bottom:12px;
+}
+
+.newsletter-box {
+  background:#0a5c0a;
+  padding:40px;
+  border-radius:25px;
+  text-align:center;
+  color:white;
+}
+.newsletter-box input {
+  padding:12px;
+  border-radius:8px;
+}
+
+</style>
+</head>
+
+<body>
+ <div id="introPopup" class="intro-popup">
+  <img src="Index.Popup.jpeg" alt="Makometsa Poultry Products" class="intro-img">
+  <div class="intro-text" style="color: white; font-weight: bold;">
     <h1>Makometsa Poultry</h1>
-    <p>Quality poultry and organic manure you can trust</p>
+    <p>
+      Supplying quality poultry and organic manure you can trust
+      for healthier meals and better farming.
+    </p>
+    <h1>&#128522</h1>
   </div>
 </div>
 
-<header class="hero-header" style="background-image:url('Index.Popup.jpeg')">
+<header class="hero-header">
 
-<nav class="hero-navbar">
-<div class="nav-container">
+  <nav class="hero-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Makometsa Poultry</a>
+      <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
 
-<a href="index.html" classy</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Products.html">Products</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+         <li><a href="Order.html">Order With Us</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div id="hamburger" class="hamburger">
-  <span></span><span></span><span></span>
-</div>
-
-<ul id="navLinks" class="nav-links">
-  <li><a href="index.html" class<li><a hreftmlAbout</a></li>
-  <li><aoducts.htmlProducts</a></li>
-  <li>Feedback.htmlFeedback</a></li>
-  <li><ontact.htmlContact</a></li>
-  <li><a href="Order.html</li>
-</ul>
-
-</div>
-</nav>
-
-<div class="hero-content">
-  <h1>Fresh Poultry Delivered</h1>
-  <p>Healthy chickens • Fresh eggs • Organic manure</p>
-  <a href="Products.html" class</a>
-</div>
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Fresh Poultry Delivered</h1>
+    <p>Healthy chickens • Fresh eggs • Premium feed</p>
+    <a href="Products.html" class="hero-btn">Explore Products</a>
+  </div>
 
 </header>
 
-<section class="container mt-5 text-center">
-  <h2 class="section-title">Why Choose Us?</h2>
+<div class="container mt-5">
+  <h2 class="text-center fw-bold text-success" data-aos="fade-up">Why Choose Us?</h2>
+  <p class="text-center mb-4" data-aos="fade-up" data-aos-delay="200">Excellence in every delivery.</p>
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">Premium Quality<br>Raised with care</div>
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="feature-card"> Premium Quality<br>Raised with care.</div>
     </div>
-
-    <div class="col-md-4">
-      <div class="card">Affordable Pricing<br>Best value</div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="feature-card"> Affordable Pricing<br>Best value guaranteed.</div>
     </div>
-
-    <div class="col-md-4">
-      <div class="card">Fast Delivery<br>Reliable service</div>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+      <div class="feature-card"> Fast Delivery<br>Across Gaborone & nearby areas.</div>
     </div>
   </div>
-</section>
+</div>
 
-<section class="container mt-5 text-center">
-  <h2 class="section-title">Best Sellers</h2>
+<div class="container mt-5">
+  <h2 class="text-center fw-bold text-success" data-aos="fade-up">Our Best Sellers</h2>
 
-  <div class="row">
-
-    <div class="col-md-4">
-      <div class="product-card card">
-        <img src.jpeg
+  <div class="row g-4 mt-3">
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="product-card text-center">
+        <img src="Broilers.jpeg" alt="Fresh Eggs" style="height: fit-content;" >
         <h5>Broiler Chickens</h5>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="product-card card">
-        <ayers.jpeg
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="product-card text-center">
+        <img src="Layers.jpeg" alt="Fresh Eggs" style="height: fit-content;" >
         <h5>Fresh Eggs</h5>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="product-card card">
-        <img src="Chicken ma       <h5>Chicken Manure</h5>
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+      <div class="product-card text-center">
+        <img src="Chicken maure.jpeg" alt="Chicken Manure" style="height: fit-content;" >
+        <h5>Chicken Manure </h5>
       </div>
     </div>
-
   </div>
-</section>
+</div>
 
-<!-- TESTIMONIALS -->
-<section class="container mt-5 text-center">
-  <h2 class="section-title">Customer Reviews</h2>
+<div class="container mt-5">
+  <h2 class="text-center fw-bold text-success" data-aos="fade-up">What Our Customers Say</h2>
 
-  <div class="row">
+  <div class="row g-4 mt-3">
 
-    <div class="col-md-4">
-      <div class="card">
-        <p>"Strong, healthy chickens. Excellent service!"</p>
+    <div class="col-md-4" data-aos="flip-left">
+      <div class="testimonial-box">
+        <img src="IMG_20260312_075820_018.jpg">
+        <p>"The chickens are strong and healthy. Excellent service!"</p>
         <strong>- Mpho K.</strong>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card">
-        <p>"Fresh eggs every time!"</p>
+    <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+      <div class="testimonial-box">
+        <img src="IMG_20250211_094953_599.webp">
+        <p>"Fresh eggs every time—fast delivery too!"</p>
         <strong>- Boitumelo D.</strong>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="card">
-        <p>"Affordable and reliable."</p>
+    <div class="col-md-4" data-aos="flip-left" data-aos-delay="400">
+      <div class="testimonial-box">
+        <img src="IMG_20250127_121801_130.jpg">
+        <p>"Affordable and reliable! Highly recommend."</p>
         <strong>- Sarah K.</strong>
       </div>
     </div>
 
   </div>
-</section>
+</div>
 
-<section class="container mt-5 mb-5">
-  <div class="card text-center" style="background:#0a5c0a; color:white;">
-    <h2>Join Our Newsletter</h2>
-    <p>Get updates and offers</p>
+<div class="container mt-5 mb-5">
+  <div class="newsletter-box" data-aos="fade-up">
+    <h2 class="fw-bold">Join Our Newsletter</h2>
+    <p>Get exclusive updates & promotions.</p>
 
     <form class="row justify-content-center mt-3">
       <div class="col-md-6">
-        <input type="email" class="form-control" placeholder="Enter your email">
+        <input type="email" class="form-control mb-3" placeholder="Enter your email">
       </div>
       <div class="col-md-3">
-        <button class="btn btn-light w-100">Subscribe</button>
+        <button class="btn btn-light w-100 fw-bold">Subscribe</button>
       </div>
     </form>
   </div>
-</section>
+</div>
 
-<footer class="footer">
-  © 2026 Makometsa Poultry
-</footer>
-
-<script src="t>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true, easing: 'ease-out' });
+</script>
 
 <script>
-/* MOBILE MENU */
-document.getElementById("hamburger").onclick = () => {
-  document.getElementById("navLinks").classList.toggle("active");
-};
-
-document.body.style.overflow = "hidden";
-setTimeout(() => {
-  document.getElementById("introPopup").style.display = "none";
-  document.body.style.overflow = "auto";
-}, 2000);
+function toggleMobileMenu() {
+  document.getElementById('navLinks').classList.toggle('mobile-active');
+  document.getElementById('hamburger').classList.toggle('active');
+}
 </script>
+
+<footer class="footer">
+  © 2026 Makometsa Poultry. All rights reserved.
+</footer>
 
 </body>
 </html>
