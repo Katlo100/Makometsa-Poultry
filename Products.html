@@ -1,97 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Our Products – Makometsa Poultry</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Our Products – Makometsa Poultry</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+<style>
+.hero-header {
+  height: 90vh;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+              url('Product.popup.jpeg') center/cover no-repeat;
+  position: relative;
+  color: white;
+}
+
+.filter-btn {
+  background: #0a5c0a; color: white;
+  padding: 10px 25px; border-radius: 8px;
+  border: none; margin: 5px;
+  font-weight: 600;
+}
+.filter-btn.active,
+.filter-btn:hover { 
+  background: #067306;
+  transform: scale(1.05);
+ }
+
+.product-card {
+  background: rgb(233,231,200);
+  padding: 40px;
+  border-left: 8px solid #0a5c0a;
+  border-radius: 40px;
+  box-shadow: 2px 4px 8px rgba(155,235,89,0.6);
+  transition: .3s;
+  padding-bottom: 20px;
+}
+.product-card:hover { transform: translateY(-6px); }
+
+.product-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+.price-tag {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #c30000;
+}
+
+.btn-order {
+  background: #0a5c0a; color: white; padding: 8px 20px;
+  border-radius: 8px; font-weight: 600; text-decoration: none;
+}
+.btn-order:hover { background: #067306; }
+
+.PRICE-LIST {
+  background: #f9f9f9;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+} 
+.PRICE-LIST h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #0a5c0a;
+}
+.PRICE-LIST ul {
+  list-style: none;
+  padding: 0;
+}
+.PRICE-LIST li {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  color: #333;
+}
+ 
+</style>
 </head>
 
 <body>
-
-<nav class="hero-navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-logo">Makometsa Poultry</a>
-
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="products.html" class="active">Products</a></li>
-      <li><a href="feedback.html">Feedback</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="order.html">Order</a></li>
-    </ul>
+<div id="introPopup" class="intro-popup">
+  <img src="Product.popup.jpeg" alt="Makometsa Poultry Products" class="intro-img">
+  <div class="intro-text" style="color: white; font-weight: bold;">
+    <h1>Makometsa Poultry</h1>
+    <p>Discover our premium poultry products at unbeatable prices.</p>
+    <h1>&#128522</h1>
   </div>
-</nav>
-
-<header class="products-hero">
-  <div class="overlay"></div>
-  <div class="hero-text">
-    <h1>Our Poultry Products</h1>
-    <p>Premium quality poultry at unbeatable prices.</p>
-    <a href="order.html" class="btn-order">Place Order</a>
-  </div>
-</header>
-
-<div class="category-buttons">
-  <button>Broilers</button>
-  <button>Eggs</button>
-  <button>Manure</button>
 </div>
 
-<section class="product-section">
+<header class="hero-header">
+  <nav class="hero-navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Makometsa Poultry</a>
 
-  <div class="product-card">
-    <img src="broilers.jpeg">
-    <h3>Broiler Chickens</h3>
-    <p class="price">P80 each</p>
-    <div class="buttons">
-      <button class="specs">View Specs</button>
-      <button class="order">Order Now</button>
+      <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="contact.html">Contact</a></li>
+         <li><a href="Order.html">Order With Us</a></li>
+      </ul>
+
     </div>
-    <button class="cart">Add to Cart</button>
+  </nav>
+
+  <div class="hero-content" data-aos="fade-up">
+    <h1>Our Poultry Products</h1>
+    <p>Premium quality poultry at unbeatable prices.</p>
+    <a href="order.html" class="hero-btn">Place Order</a>
   </div>
 
-  <div class="product-card">
-    <img src="eggs.jpeg">
-    <h3>Fresh Eggs</h3>
-    <p class="price">P14 half dozen</p>
-    <div class="buttons">
-      <button class="specs">View Specs</button>
-      <button class="order">Order Now</button>
+</header>
+
+<div class="container text-center mt-5" data-aos="fade-up">
+  <a href="Product Catalogue.html" class="btn btn-outline-success">
+    Broilers
+  </a>
+
+  <a href="Eggs catalogue.html" class="btn btn-outline-success">
+    Eggs
+  </a>
+
+</div>
+
+<div class="container mt-5">
+  <div class="row g-4">
+
+    <div class="col-md-4 product-item broilers" data-aos="zoom-in">
+      <div class="product-card">
+        <img src="Broilers.jpeg" alt="Broiler Chickens" style="height: fit-content;" >
+        <div class="text-center px-3">
+          <h4>Broiler Chickens</h4>
+          <p class="price-tag">P80 each</p>
+          <button class="btn btn-outline-success mb-2" data-bs-toggle="modal" data-bs-target="#specBroilers">View Specs</button>
+          <a href="order.html" class="btn-order">Order Now</a>
+        </div>
+      </div>
     </div>
-    <button class="cart">Add to Cart</button>
-  </div>
 
-  <div class="product-card">
-    <img src="manure.jpeg">
-    <h3>Chicken Manure</h3>
-    <p class="price">P150 per 50kg</p>
-    <div class="buttons">
-      <button class="specs">View Specs</button>
-      <button class="order">Order Now</button>
+    <div class="col-md-4 product-item eggs" data-aos="zoom-in" data-aos-delay="200">
+      <div class="product-card">
+        <img src="Layers.jpeg" alt="Fresh Eggs" style="height: fit-content;" >
+        <div class="text-center px-3">
+          <h4>Fresh Eggs</h4>
+          <p class="price-tag">P14 half dozen</p>
+          <button class="btn btn-outline-success mb-2" data-bs-toggle="modal" data-bs-target="#specEggs">View Specs</button>
+          <a href="order.html" class="btn-order">Order Now</a>
+       </div>
+      </div>
     </div>
-    <button class="cart">Add to Cart</button>
+
+    <div class="col-md-4 product-item feed" data-aos="zoom-in" data-aos-delay="400">
+      <div class="product-card">
+        <img src="Chicken maure.jpeg" alt="Chicken maure" style="height: fit-content;" >
+        <div class="text-center px-3">
+          <h4>Chicken maure</h4>
+          <p class="price-tag">P150 per 50kg</p>
+          <button class="btn btn-outline-success mb-2" data-bs-toggle="modal" data-bs-target="#specFeed">View Specs</button>
+          <a href="order.html" class="btn-order">Order Now</a>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-</section>
+<div class="modal fade" id="specBroilers">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <h3>Broiler Chickens</h3>
+      <ul>
+        <li>Strong & healthy</li>
+        <li>Fast growth rate</li>
+        <li>Well-fed with high-quality nutrition</li>
+        <li>Great for retail or bulk buying</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<div class="cart-icon">🛒 0</div>
+<div class="modal fade" id="specEggs">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <h3>Fresh Eggs</h3>
+      <ul>
+        <li>Farm fresh daily</li>
+        <li>Uniform tray sizes</li>
+        <li>No cracks</li>
+        <li>Perfect for home or business</li>
+        <li
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="specFeed">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3">
+      <h3>Chicken Manure</h3>
+      <ul>
+        <li>Natural fertilizer</li>
+        <li>Improves soil health</li>
+        <li>Eco-friendly & sustainable</li>
+        <li>Reduces waste & promotes circular farming</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleCatalogue(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
+
+let cart = [];
+
+function addToCart(name, price) {
+  const existing = cart.find(item => item.name === name);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const cartItems = document.getElementById("cartItems");
+  const cartCount = document.getElementById("cartCount");
+  const cartTotal = document.getElementById("cartTotal");
+
+  let total = 0;
+  cartItems.innerHTML = "";
+
+  cart.forEach(item => {
+    total += item.price * item.qty;
+    cartItems.innerHTML += `
+      <div class="cart-item d-flex justify-content-between">
+        <span>${item.name} × ${item.qty}</span>
+        <strong>P${(item.price * item.qty).toFixed(2)}</strong>
+      </div>
+    `;
+  });
+
+  cartCount.textContent = cart.reduce((sum, i) => sum + i.qty, 0);
+  cartTotal.textContent = total.toFixed(2);
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true, easing: "ease-out" });
+</script>
+
+<script>
+function toggleMobileMenu() {
+  document.getElementById('navLinks').classList.toggle('mobile-active');
+  document.getElementById('hamburger').classList.toggle('active');
+}
+</script>
+
+<script>
+function filterProducts(category) {
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.product-item').forEach(item => {
+    item.style.display = (category === 'all' || item.classList.contains(category)) ? "block" : "none";
+  });
+}
+</script>
+
+<script>
+  document.body.style.overflow = "hidden";
+
+  setTimeout(() => {
+    document.getElementById("introPopup").style.display = "none";
+    document.body.style.overflow = "auto";
+  }, 2800);  // total time = zoom + fade
+</script>
+</body>
 
 <footer class="footer">
   © 2026 Makometsa Poultry. All rights reserved.
 </footer>
 
-<script>
-function toggleMenu() {
-  document.getElementById("navLinks").classList.toggle("mobile-active");
-}
-</script>
-
-</body>
 </html>
