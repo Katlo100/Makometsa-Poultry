@@ -1,3 +1,170 @@
+.hero-header {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 50;
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #b3ffb3;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.9);
+    width: 100%;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .nav-links.mobile-active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+.hero-content {
+  max-width: 700px;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 800;
+}
+
+.hero-content p {
+  font-size: clamp(16px, 2vw, 20px);
+}
+
+.hero-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  background: #0a5c0a;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.hero-btn:hover {
+  background: #067306;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a5c0a;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.divider-line {
+  width: 80px;
+  height: 4px;
+  background: #0a5c0a;
+  margin: 10px auto 30px;
+  border-radius: 10px;
+}
+
+p {
+  max-width: 800px;
+  margin: auto;
+}
+
+.values-box {
+  background: #e9e7c8;
+  padding: 30px;
+  border-left: 6px solid #0a5c0a;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.values-box h4 {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #0a5c0a;
+}
+
+.values-box:hover {
+  transform: translateY(-5px);
+}
+
+.intro-text {
+  color: white;
+  font-weight: bold;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #0a5c0a;
+  color: white;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
