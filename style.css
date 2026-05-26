@@ -339,7 +339,8 @@ a {
 .product-card {
   background: white;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  border-left: 8px solid #0a5c0a;
+  box-shadow: 2px 4px 8px rgba(155,235,89,0.7);
   padding-bottom: 20px;
   transition: 0.3s;
 }
